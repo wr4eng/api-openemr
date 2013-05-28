@@ -26,13 +26,6 @@ $sanitize_all_escapes=true;
 
 include_once(dirname(dirname(__FILE__)) . "/interface/globals.php");
 
-if(!$GLOBALS['rest_api_server']){
-    echo "<openemr>
-            <status>-1</status>
-            <reason>Please check the REST API server settings in Administration/Globals/Connectors</reason>
-        </openemr>";
-    exit;
-}
 
 require_once("$srcdir/pid.inc");
 require_once("$srcdir/patient.inc");

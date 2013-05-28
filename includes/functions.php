@@ -580,8 +580,8 @@ function curlRequest($url, $body) {
 }
 
 function notification($deviceToken, $badge = 1, $msg_count = 0, $apt_count = 0, $message = 'Notification!', $passphrase = 'medmasterpro') {
-    if (!$GLOBALS['device_push_notification_service'])
-        return;
+//    if (!$GLOBALS['device_push_notification_service'])
+//        return;
     $ctx = stream_context_create();
     stream_context_set_option($ctx, 'ssl', 'local_cert', 'includes/apns-dev.pem');
     stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
