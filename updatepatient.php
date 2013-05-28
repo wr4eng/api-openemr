@@ -87,6 +87,7 @@ $o_insurance_id = $_POST['o_insurance_id'];
 
 $image_data = isset($_POST['image_data']) ? $_POST['image_data'] : '';
 
+
 if ($userId = validateToken($token)) {
     $user = getUsername($userId);
     
