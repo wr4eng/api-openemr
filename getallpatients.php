@@ -38,7 +38,7 @@ if ($userId = validateToken($token)) {
     $acl_allow = acl_check('patients', 'demo', $username);
     if ($acl_allow) {
 
-        $strQuery = "SELECT id, pid, fname as firstname, lname as lastname,mname as middlename, phone_contact as phone, dob, sex as gender FROM patient_data";
+        $strQuery = "SELECT id, pid, fname as firstname, lname as lastname,mname as middlename, phone_home as phone, dob, sex as gender,phone_biz AS phonebiz FROM patient_data";
         $result = sqlStatement($strQuery);
         $numRows = sqlNumRows($result);
         if ($numRows > 0) {

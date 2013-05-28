@@ -42,7 +42,6 @@ $extrainfo = isset($_POST['extrainfo']) ? $_POST['extrainfo'] : '';
 $diagnosis = isset($_POST['diagnosis']) ? $_POST['diagnosis'] : '';
 $activity = isset($_POST['activity']) ? $_POST['activity'] : '1';
 $comments = isset($_POST['comments']) ? $_POST['comments'] : '';
-$modifydate = 'NOW()';
 $pid = $_POST['pid'];
 $user = '';
 $groupname = isset($_POST['groupname']) ? $_POST['groupname'] : 'Default';
@@ -97,7 +96,6 @@ if ($userId = validateToken($token)) {
                                                 '" . add_escape_custom($reaction) . "',
                                                 '" . add_escape_custom($external_allergyid) . "',
                                                 '" . add_escape_custom($erx_source) . "',
-                                                '" . $modifydate . "',
                                                 '" . add_escape_custom($erx_uploaded) . "')";
         $result = sqlInsert($strQuery);
 

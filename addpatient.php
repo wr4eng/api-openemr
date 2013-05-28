@@ -25,7 +25,7 @@
 header("Content-Type:text/xml");
 $ignoreAuth = true;
 require_once 'classes.php';
-require_once("$srcdir/documents.php");
+
 $xml_array = array();
 
 $token = $_POST['token'];
@@ -229,9 +229,25 @@ if ($userId = validateToken($token)) {
             $ext = 'png';
             $cat_title = 'Patient Photograph';
             
+            $strQuery2 = "SELECT id from `categories` WHERE name LIKE '" . add_escape_custom($cat_title) . "'";
+            $result3 = sqlQuery($strQuery2);
         
-            $cat_id = document_category_to_id($cat_title);
+            if ($result3) {
+                $cat_id = $result3['id'];
+            } else {
+                sqlStatement("lock tables categories read");
 
+                $result4 = sqlQuery("select max(id)+1 as id from categories");
+
+                $cat_id = $result4['id'];
+
+                sqlStatement("unlock tables");
+
+                $cat_insert_query = "INSERT INTO `categories`(`id`, `name`, `value`, `parent`, `lft`, `rght`) 
+                VALUES (" . add_escape_custom($cat_id) . ",'" . add_escape_custom($cat_title) . "','',1,0,0)";
+
+                sqlStatement($cat_insert_query);
+            }
             $image_path = $sitesDir . "{$site}/documents/{$patient_id}";
 
 

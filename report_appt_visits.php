@@ -28,8 +28,8 @@ require_once 'classes.php';
 
 require_once("$srcdir/formatting.inc.php");
 require_once("$srcdir/../custom/code_types.inc.php");
-require_once("$srcdir/pdflibrary/config/lang/eng.php");
-require_once("$srcdir/pdflibrary/tcpdf.php");
+require_once("includes/pdflibrary/config/lang/eng.php");
+require_once("includes/pdflibrary/tcpdf.php");
 
 $errmsg = "";
 $alertmsg = ''; // not used yet but maybe later

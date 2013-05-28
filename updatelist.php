@@ -41,9 +41,10 @@ $extrainfo = isset($_POST['extrainfo']) ? $_POST['extrainfo'] : '';
 $diagnosis = isset($_POST['diagnosis']) ? $_POST['diagnosis'] : '';
 $activity = isset($_POST['activity']) ? $_POST['activity'] : '1';
 $comments = isset($_POST['comments']) ? $_POST['comments'] : '';
-$pid = add_escape_custom($_POST['pid']);
+$pid = $_POST['pid'];
 $user = '';
 $groupname = isset($_POST['groupname']) ? $_POST['groupname'] : '';
+
 
 $outcome = $_POST['outcome'];
 $destination = $_POST['destination'];
@@ -64,9 +65,6 @@ if ($userId = validateToken($token)) {
     $user = getUsername($userId);
     $acl_allow = acl_check('patients', 'med', $user);
 
-    $_SESSION['authUser'] = $user;
-    $_SESSION['authGroup'] = $site;
-    $_SESSION['pid'] = $pid;
 
     if ($acl_allow) {
         $strQuery = "UPDATE `lists` SET 
