@@ -51,7 +51,9 @@ $query2 = "ALTER TABLE `users` ADD `create_date` DATE NOT NULL ,
             ADD `country_name` VARCHAR( 50 ) NULL ,
             ADD `latidute` VARCHAR( 20 ) NULL ,
             ADD `longitude` VARCHAR( 20 ) NULL ,
-            ADD `time_zone` VARCHAR( 10 ) NULL";
+            ADD `time_zone` VARCHAR( 10 ) NULL ,
+            ADD `app_pin` VARCHAR( 100 ) NULL,
+            ADD `contact_image` VARCHAR( 100 ) NULL";
 
 //$db->query($query2);
 $res2 = sqlStatement($query2);
